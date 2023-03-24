@@ -11,6 +11,24 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/cover/">
 
+    <script src="jquery-3.6.4.js"></script>
+    <script>
+      function heroFunction() {
+        $(document).ready(function(){
+          $("main").fadeOut("fast", function(){
+            var newButton = $("<h3></h3>").text("Hejhej");
+            $("main").after(newButton);
+          });
+        });
+
+        
+      }
+
+
+
+
+    </script>
+
     
 
     
@@ -116,10 +134,10 @@
     
     <div class="row justify-content-around h-75">
 
-      <a href="#" class="card bg-dark col-4 bg-opacity-50 card-overflow" style="color:aliceblue; text-decoration-line: none;">
+      <a href="#" onclick="heroFunction()" class="card bg-dark col-4 bg-opacity-50 card-overflow" style="color:aliceblue; text-decoration-line: none;">
         <h2>Solokvist</h2>
         
-        <img href="#" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/videos/dota_react/heroes/renders/bounty_hunter.png" class="card-img" alt="...">
+        <img src="https://cdn.cloudflare.steamstatic.com/apps/dota2/videos/dota_react/heroes/renders/bounty_hunter.png" class="card-img" alt="...">
         
       </a>
 
