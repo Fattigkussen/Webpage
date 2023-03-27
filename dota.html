@@ -13,6 +13,9 @@
 
     <script src="jquery-3.6.4.js"></script>
     <script>
+
+const heroList = ["Abaddon", "Alchemist", "Ancient Apparition", "Anti-Mage", "Arc Warden", "Axe", "Bane", "Batrider", "Beastmaster", "Bloodseeker", "Bounty Hunter", "Brewmaster", "Bristleback", "Broodmother", "Centaur Warrunner", "Chaos Knight", "Chen", "Clinkz", "Clockwerk", "Crystal Maiden", "Dark Seer", "Dark Willow", "Dazzle", "Death Prophet", "Disruptor", "Doom", "Dragon Knight", "Drow Ranger", "Earth Spirit", "Earthshaker", "Elder Titan", "Ember Spirit", "Enchantress", "Enigma", "Faceless Void", "Gyrocopter", "Hoodwink", "Huskar", "Invoker", "Io", "Jakiro", "Juggernaut", "Keeper of the Light", "Kunkka", "Legion Commander", "Leshrac", "Lich", "Lifestealer", "Lina", "Lion", "Lone Druid", "Luna", "Lycan", "Magnus", "Mars", "Medusa", "Meepo", "Mirana", "Monkey King", "Morphling", "Naga Siren", "Nature's Prophet", "Necrophos", "Night Stalker", "Nyx Assassin", "Ogre Magi", "Omniknight", "Oracle", "Outworld Devourer", "Pangolier", "Phantom Assassin", "Phantom Lancer", "Phoenix", "Puck", "Pudge", "Pugna", "Queen of Pain", "Razor", "Riki", "Rubick", "Sand King", "Shadow Demon", "Shadow Fiend", "Shadow Shaman", "Silencer", "Skywrath Mage", "Slardar", "Slark", "Snapfire", "Sniper", "Spectre", "Spirit Breaker", "Storm Spirit", "Sven", "Techies", "Templar Assassin", "Terrorblade", "Tidehunter", "Timbersaw", "Tinker", "Tiny", "Treant Protector", "Troll Warlord", "Tusk", "Underlord", "Undying", "Ursa", "Vengeful Spirit", "Venomancer", "Viper", "Visage", "Void Spirit", "Warlock", "Weaver", "Windranger", "Winter Wyvern", "Witch Doctor", "Wraith King", "Zeus"];
+
       function heroFunction(numberOfHeroes) {
 
           $(document).ready(function(){
@@ -22,14 +25,21 @@
 
             
             //Create text
-            const heroes = handleButtonClick();
-            const $heroesToPick = $(`<p id='output' style="color: white;"></p>`).text(`Your heroes are ${heroes[0]} and ${heroes[1]}.`);
+            const heroes = pickHeroes(numberOfHeroes);
+
+            if (numberOfHeroes == 2){
+              var $heroesToPick = $(`<h2 id='output' style="color: white; position: relative; top: 40%; left: 0%;"></h2>`).html(`Ni ska såklart spela <span style="color:red">${heroes[0]}</span> och <span style="color:orange">${heroes[1]}!</span>`);  
+            }
+            else if (numberOfHeroes == 1){
+              var $heroesToPick = $(`<h2 id='output' style="color: white; position: relative; top: 40%; left: 0%"></h2>`).html(`Det är dags att spela <span style="color:red"> ${heroes[0]}!</span>`); 
+            }
+            
 
             //Create button
-            var $refreshBtn = $('<button class="container btn btn-secondary btn-lg" style="width: 5%; min-width: 100px;">Tillbaka</button>');
+            var $refreshBtn = $('<button class="container btn btn-secondary btn-lg" style="width: 5%; min-width: 100px; margin-bottom: 50px;">Tillbaka</button>');
 
             //Show text + button
-            $("main").before($heroesToPick);
+            $("main").append($heroesToPick);
             $("main").after($refreshBtn);
             
 
@@ -43,25 +53,24 @@
         
       }
 
-      function pickHeroes() {
+      function pickHeroes(numberOfHeroes) {
         // Heroes array omitted for brevity
-        const heroes = ["Abaddon", "Alchemist", "Ancient Apparition", "Anti-Mage", "Arc Warden", "Axe", "Bane", "Batrider", "Beastmaster", "Bloodseeker", "Bounty Hunter", "Brewmaster", "Bristleback", "Broodmother", "Centaur Warrunner", "Chaos Knight", "Chen", "Clinkz", "Clockwerk", "Crystal Maiden", "Dark Seer", "Dark Willow", "Dazzle", "Death Prophet", "Disruptor", "Doom", "Dragon Knight", "Drow Ranger", "Earth Spirit", "Earthshaker", "Elder Titan", "Ember Spirit", "Enchantress", "Enigma", "Faceless Void", "Gyrocopter", "Hoodwink", "Huskar", "Invoker", "Io", "Jakiro", "Juggernaut", "Keeper of the Light", "Kunkka", "Legion Commander", "Leshrac", "Lich", "Lifestealer", "Lina", "Lion", "Lone Druid", "Luna", "Lycan", "Magnus", "Mars", "Medusa", "Meepo", "Mirana", "Monkey King", "Morphling", "Naga Siren", "Nature's Prophet", "Necrophos", "Night Stalker", "Nyx Assassin", "Ogre Magi", "Omniknight", "Oracle", "Outworld Devourer", "Pangolier", "Phantom Assassin", "Phantom Lancer", "Phoenix", "Puck", "Pudge", "Pugna", "Queen of Pain", "Razor", "Riki", "Rubick", "Sand King", "Shadow Demon", "Shadow Fiend", "Shadow Shaman", "Silencer", "Skywrath Mage", "Slardar", "Slark", "Snapfire", "Sniper", "Spectre", "Spirit Breaker", "Storm Spirit", "Sven", "Techies", "Templar Assassin", "Terrorblade", "Tidehunter", "Timbersaw", "Tinker", "Tiny", "Treant Protector", "Troll Warlord", "Tusk", "Underlord", "Undying", "Ursa", "Vengeful Spirit", "Venomancer", "Viper", "Visage", "Void Spirit", "Warlock", "Weaver", "Windranger", "Winter Wyvern", "Witch Doctor", "Wraith King", "Zeus"];
+        const heroes = [];
+  const randomIndex = Math.floor(Math.random() * heroList.length);
+  heroes.push(heroList[randomIndex]);
 
+  // If numberOfHeroes is 2, pick another hero
+  if (numberOfHeroes === 2) {
+    let secondIndex = randomIndex;
+    while (secondIndex === randomIndex) {
+      secondIndex = Math.floor(Math.random() * heroList.length);
+    }
+    heroes.push(heroList[secondIndex]);
+  }
 
-        const hero1Index = Math.floor(Math.random() * heroes.length);
-        let hero2Index = Math.floor(Math.random() * heroes.length);
-        while (hero2Index === hero1Index) {
-          hero2Index = Math.floor(Math.random() * heroes.length);
-        }
-        return [heroes[hero1Index], heroes[hero2Index]];
+  return heroes;
       }
       
-      function handleButtonClick() {
-        const heroes = pickHeroes();
-        const outputElement = document.getElementById("output");
-        outputElement.textContent = `Your heroes are ${heroes[0]} and ${heroes[1]}.`;
-        return heroes;
-      }
 
 
 
@@ -175,14 +184,14 @@
     
     <div class="row justify-content-around h-75">
 
-      <a href="#" onclick="heroFunction()" class="card bg-dark col-4 bg-opacity-50 card-overflow" style="color:aliceblue; text-decoration-line: none; max-height: 650px;">
+      <a href="#" onclick="heroFunction(1)" class="card bg-dark col-4 bg-opacity-50 card-overflow" style="color:aliceblue; text-decoration-line: none; max-height: 650px;">
         <h2>Solokvist</h2>
         
         <img src="https://cdn.cloudflare.steamstatic.com/apps/dota2/videos/dota_react/heroes/renders/bounty_hunter.png" class="card-img" alt="...">
         
       </a>
 
-      <a href="#" onclick="heroFunction()" class="card bg-dark col-4 bg-opacity-50 card-overflow" style="color:aliceblue; text-decoration-line: none; max-height: 650px;">
+      <a href="#" onclick="heroFunction(2)" class="card bg-dark col-4 bg-opacity-50 card-overflow" style="color:aliceblue; text-decoration-line: none; max-height: 650px;">
         <h2>Dubbel trubbel</h2>
 
         <img src="https://raw.githubusercontent.com/Fattigkussen/Webpage/main/docs/assets/dota/combinedheroes.png" class="card-img" style="size: 50px;" alt="...">
