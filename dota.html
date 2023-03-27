@@ -28,7 +28,7 @@ const heroList = ["Abaddon", "Alchemist", "Ancient Apparition", "Anti-Mage", "Ar
             const heroes = pickHeroes(numberOfHeroes);
 
             if (numberOfHeroes == 2){
-              var $heroesToPick = $(`<h2 id='output' style="color: white; position: relative; top: 40%; left: 0%;"></h2>`).html(`Ni ska såklart spela <span style="color:red">${heroes[0]}</span> och <span style="color:orange">${heroes[1]}!</span>`);  
+              var $heroesToPick = $(`<h2 id='output' style="color: white; position: relative; top: 40%; left: 0%;"></h2>`).html(`Ni ska såklart spela <span style="color:yellow">${heroes[0]}</span> och <span style="color:orange">${heroes[1]}!</span>`);  
             }
             else if (numberOfHeroes == 1){
               var $heroesToPick = $(`<h2 id='output' style="color: white; position: relative; top: 40%; left: 0%"></h2>`).html(`Det är dags att spela <span style="color:red"> ${heroes[0]}!</span>`); 
@@ -93,6 +93,15 @@ const heroList = ["Abaddon", "Alchemist", "Ancient Apparition", "Anti-Mage", "Ar
         width: 110%;
         height: 100%;
         object-fit: none;
+        align-self:center;
+        object-position: 50% 30%;
+        transition: transform .2s;
+      }
+
+      .another-card-img {
+        width: 110%;
+        height: 100%;
+        object-fit:cover;
         align-self:center;
         object-position: 50% 30%;
         transition: transform .2s;
@@ -194,7 +203,7 @@ const heroList = ["Abaddon", "Alchemist", "Ancient Apparition", "Anti-Mage", "Ar
       <a href="#" onclick="heroFunction(2)" class="card bg-dark col-4 bg-opacity-50 card-overflow" style="color:aliceblue; text-decoration-line: none; max-height: 650px;">
         <h2>Dubbel trubbel</h2>
 
-        <img src="https://raw.githubusercontent.com/Fattigkussen/Webpage/main/docs/assets/dota/combinedheroes.png" class="card-img" style="size: 50px;" alt="...">
+        <img src="https://raw.githubusercontent.com/Fattigkussen/Webpage/main/docs/assets/dota/combinedheroes.png" class="card-img another-card-img" style="size: 50px;" alt="...">
 
       </a>
     </div>
