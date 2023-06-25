@@ -75,6 +75,12 @@
         white-space: nowrap;
         -webkit-overflow-scrolling: touch;
       }
+      
+      header{
+        position: fixed;
+        width: 100%;
+        z-index: 999;
+      }
     </style>
 
     
@@ -85,17 +91,18 @@
   
 <body class="d-flex h-100 text-center text-bg-dark" style="padding-top: 0px;">
     
-    <div class="cover-container d-flex w-100 h-100 p-3 flex-column mt-0">
-      <header class="mb-auto mt-0 mb-5" style="padding-bottom: 15px;">
-        <div>
-          <h3 class="float-md-start mb-0" style="color: rgb(136, 135, 135);">Fattigkussen</h3>
-          <nav class="nav nav-masthead justify-content-center float-md-end">
-            <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="index.html">Hem</a>
-            <a class="nav-link fw-bold py-1 px-0" href="Fattigkussen.html">Vem är fattigkussen?</a>
-            <a class="nav-link fw-bold py-1 px-0" href="#">Kontakt</a>
-          </nav>
-        </div>
-      </header>
+  <header class="mb-auto">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column text-bg-dark" > 
+      <div>
+        <h3 class="float-md-start mb-0" style="color: rgb(136, 135, 135);">Fattigkussen</h3>
+        <nav class="nav nav-masthead justify-content-center float-md-end">
+          <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="index.html">Hem</a>
+          <a class="nav-link fw-bold py-1 px-0" href="Fattigkussen.html">Vem är fattigkussen?</a>
+          <a class="nav-link fw-bold py-1 px-0" href="#">Kontakt</a>
+        </nav>
+      </div>
+    </div>
+  </header>
 
 <main>
 
